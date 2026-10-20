@@ -35,7 +35,19 @@ First, the eef.inp must be set up. In this file we have 6 lines which are the se
    Line 6: Which cartesian coordinate to analyze (only for 1D calculations)
 
 Once the eef.inp file is set up, we can proceed with the calculations by sending the eef.sh script into the queue system. Please, adapt the header of eef.sh for proper alignement with your queue system.
-The eef.sh script will prepare a new folder in which all the calculations will take place.
+The eef.sh script will prepare a new folder in which all the calculations will take place. Specifically, lines 1-4 and 81-84 of eef.sh are susceptible of change by the user, depending on the queue system (we assume slurm) and the ADF version. Note that we used ADF/2019.102, for newer versions blended with AMS package, the script might have to change in more places not just in the adverted lines of code.
+
+Then, all inputs will be prepared automatically, according to the settings in eef.inp
+
+The script is mainly divided into two main parts: 1D-fied type calculations and 2D-field type calculations.
+
+At line 310 of code, the 1D module starts preparing a.ll files that are needed for the FDB-EDA run, and the calculations prepared previously are executed. Please, adapt this section to your requirements.
+
+At line 420 of eef.sh the data recollection starts for the 1D calculations. Output files will be prepared summarizing the data fetched. This is the total bonding energies, the Pauli repulsion the orbital interaction, and electrostatics. Note that this section contains several "grep" commands. Adapt the necessary if you are using newer versions of AMS, and the data appears in a different format.
+
+If 2D data is requested, additional crossed-term derivatives are required. In this case, after line 550 of the script the 2D-specific calculations are sent to queue, collected, and processed.
+
+The computation of 2D crossed derivatives is done by ams_oeef_2D.exe software. The code for this is also provided in this repository as a *.f90 file. Please compile it in your cluster and route it properly before execution.
 
 
 
