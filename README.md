@@ -35,7 +35,7 @@ First, the eef.inp must be set up. In this file we have 6 lines which are the se
    Line 6: Which cartesian coordinate to analyze (only for 1D calculations)
 
 Once the eef.inp file is set up, we can proceed with the calculations by sending the eef.sh script into the queue system. Please, adapt the header of eef.sh for proper alignement with your queue system.
-The eef.sh script will prepare a new folder in which all the calculations will take place. Specifically, lines 1-4 and 81-84 of eef.sh are susceptible of change by the user, depending on the queue system (we assume slurm) and the ADF version. Note that we used ADF/2019.102, for newer versions blended with AMS package, the script might have to change in more places not just in the adverted lines of code.
+The eef.sh script will create a new folder (with the name of the supramolecule) in which all the calculations will take place. This folder will contain two subfolders called int_f and strain, in which the field-dependent interaction energy and the strain calculations will take place. All the necessary outputs for the data analysis (after collecting data from the ADF outputs) will be stored at the base of the newly created folder. The Specifically, lines 1-4 and 81-84 of eef.sh are susceptible of change by the user, depending on the queue system (we assume slurm) and the ADF version. Note that we used ADF/2019.102, for newer versions blended with AMS package, the script might have to change in more places not just in the adverted lines of code.
 
 Then, all inputs will be prepared automatically, according to the settings in eef.inp
 
