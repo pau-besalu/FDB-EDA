@@ -1,0 +1,32 @@
+TITLE filename
+
+Atoms
+ INLINE coordinates
+End
+
+CHARGE 0
+
+SYMMETRY NOSYM
+
+XC
+    GGA BP86
+End
+
+Basis
+    Type TZ2P
+    Core None
+    CreateOutput None
+End
+
+SCF
+    Iterations 99
+    Converge 1e-6 1e-6
+    Mixing 0.20
+End
+
+NumericalQuality VeryGood
+
+AOResponse
+End
+
+ENDINPUT
