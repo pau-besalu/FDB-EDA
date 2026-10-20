@@ -1,8 +1,8 @@
 # FDB-EDA
 Script associated with the streamline generation of inputs and output analysis of FDB-EDA calculations.
 
-This script needs to be adapted for each queue system, and version of AMS/ADF. In this particular case we mused
-The main structure, however, can be addapted and utilized. For any questions regarding the implementation of this software please contact the main developer: paubesalu@gmail.com
+Disclaimer: This script was not inicially intended to be general, but for usage on our research cluster, therefore it is prone to errors if not used with the slurm queue system and ADF/2019.102 version.
+The main structure of the script, however, can be addapted and utilized. For any questions regarding the implementation of this software please contact the main developer: paubesalu@gmail.com
 
 The repository contains the following files:
   - File 1: eef.sh - the script that will be used to generate all inputs and fetch data from output
