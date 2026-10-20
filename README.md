@@ -49,7 +49,15 @@ If 2D data is requested, additional crossed-term derivatives are required. In th
 
 The computation of 2D crossed derivatives is done by ams_oeef_2D.exe software. The code for this is also provided in this repository as a *.f90 file. Please compile it in your cluster and route it properly before execution.
 
+All the required energies will be summarized at a field labeled as summary.dat. This will contain either 1D or 2D data, and it will be located at the newly created folder in which the inputs and outputs are stored.
 
+The ams_oeef_2D.exe software will collect the data from the summary.dat and will prepare several files labelled in the general form "A_F1F2.dat". A can be: Str, pau, oi, inten, toten; which are shortcuts for Strain energy, Pauli repulsion, orbital interaction, interaction energy and total energy. Then F1 and F2 are the two directions of the field in which this derivatives are computed. For example Str_XY.dat contains the data of the strain energy with electric-fields in X and Y directions.
+
+All these ouptut files present three columns, the two first correspond to the electric-field strength in the two specified directions, and the third column corresponds to the energy term computed. For instance in Str_XY.dat first column represents the EF strenght in X direction, the second column represents the EF strenght in Y direction and the third column represents the strain energy for each combination of X and Y electric-field strenghts.
+
+This data will be ready for eventual plotting using usual python plotting libraries like matplotlib. The lenght of the file will be the grid size for the plot. This can be controlled by the field.inp file. This field contains 9 values representing the EF strenghts to compute the 1D analysis, and the last (10th) row represents the grid size for the plotting. In this way, the grid (and the lenght of the files) can be controlled by the field.inp.
+
+Also, raw romberg triangles for 1st and 2nd derivatives will be available at deriv1.dat and deriv2.dat. This way, the Romberg triangles from which the derivatives are computed can be manually inspected if necessary.
 
 
 
